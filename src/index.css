@@ -1,1 +1,32 @@
 @import "tailwindcss";
+body{
+    background-color: #ffffff;
+    color: #111827;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark {
+    background-color: #111827;
+    color: #f9fafb;
+}
+body.dark input, body.dark button  {
+    background-color: #1f2937;
+    color: #f9fafb;
+    border-color: #374151;
+}
+
+.animate-fade-in{
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+         transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

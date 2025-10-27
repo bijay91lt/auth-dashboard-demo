@@ -1,6 +1,8 @@
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from '../contexts/auth';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { useToast } from "../contexts/toasts";
+import { useTheme } from '../contexts/theme';
 
 type LoginFormInputs = {
     email: string;
@@ -10,12 +12,13 @@ type LoginFormInputs = {
 const Login = () => {
     const { login, isLoading } = useAuth();
     const navigate = useNavigate();
+    const { showToast } = useToast();
+    const { theme, toggleTheme} = useTheme();
 
     const {
         register,
         handleSubmit,
         formState: { errors }, 
-        setError: setFormError,
         reset,
     } = useForm<LoginFormInputs> ();
 
@@ -25,15 +28,21 @@ const Login = () => {
             reset();
             navigate('/dashboard', {replace: true});
         } catch {
-            setFormError('root', {
-                type: 'manual',
-                message: 'Invalid email or password',
-            });
+            showToast('Invalid email or password', 'error');
         }
     };
 
     return(
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
+            {/* Theme Toggle Button */}
+            {/* <button
+            
+            onClick={toggleTheme}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white dark:bg-gray-800 shadow hover:bg-gray-100 dark:hover:bg-gray-700"
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+            {theme === 'light' ? '🌙' : '☀️'}
+            </button> */}
             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow">
                 <h2 className="text-2xl font-bold text-center">Sign in</h2>
 

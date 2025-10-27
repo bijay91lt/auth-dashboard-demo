@@ -1,11 +1,20 @@
-import { AuthProvider } from "./contexts/AuthContext";
-import Login from "./pages/Login";
+import { AuthProvider } from './contexts/AuthProvider';
+import { ThemeProvider } from './contexts/ThemeProvider';
+import { ToastProvider } from './contexts/ToastProvider';
+import AppRoutes from './routes/AppRoutes';
+import Toast from './components/Toast';
+import './index.css';
 
-function App (){
+function App() {
   return (
-    <AuthProvider>
-      <Login/>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <ToastProvider>
+          <AppRoutes />
+          <Toast />
+        </ToastProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
