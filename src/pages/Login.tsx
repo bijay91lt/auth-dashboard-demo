@@ -2,7 +2,7 @@ import { useAuth } from '../contexts/auth';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useToast } from "../contexts/toasts";
-import { useTheme } from '../contexts/theme';
+// import { useTheme } from '../contexts/theme';
 
 type LoginFormInputs = {
     email: string;
@@ -13,7 +13,7 @@ const Login = () => {
     const { login, isLoading } = useAuth();
     const navigate = useNavigate();
     const { showToast } = useToast();
-    const { theme, toggleTheme} = useTheme();
+    // const { theme, toggleTheme} = useTheme();
 
     const {
         register,
@@ -36,7 +36,7 @@ const Login = () => {
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
             {/* Theme Toggle Button */}
             {/* <button
-            
+
             onClick={toggleTheme}
             className="absolute top-4 right-4 p-2 rounded-full bg-white dark:bg-gray-800 shadow hover:bg-gray-100 dark:hover:bg-gray-700"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
